@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #12100e;
+  --color-ink-2: #191612;
+  --color-coal: #221d17;
+  --color-coal-2: #2b251d;
+  --color-cream: #f4eee2;
+  --color-cream-2: #fbf7ef;
+  --color-sand: #d9cbb3;
+  --color-mute: #a99f8f;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e6d6b4;
+  --color-gold-deep: #a5864e;
+  --color-pink: #ec6fa6;
+  --color-pink-deep: #a92f62;
+  --color-pink-soft: #f6d9e5;
+  --color-mint: #7eb8a8;
+  --color-mint-deep: #4a8a7a;
+  --color-mint-soft: #d4efe6;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-script: "Parisienne", "Brush Script MT", cursive;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.033;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  input,
+  select,
+  textarea {
+    font-weight: 400;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #17140f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4b4133;
+    border-radius: 999px;
+    border: 2px solid #17140f;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-deep);
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gold-underline {
+    background-image: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    height: 1px;
+  }
+
+  .dotted-line {
+    flex: 1 1 auto;
+    border-bottom: 1px dotted rgba(30, 25, 18, 0.28);
+    margin: 0 0.65rem 0.4rem;
+    min-width: 14px;
+  }
+
+  .dotted-line-dark {
+    flex: 1 1 auto;
+    border-bottom: 1px dotted rgba(217, 203, 179, 0.22);
+    margin: 0 0.65rem 0.4rem;
+    min-width: 14px;
+  }
+
+  .arch {
+    border-radius: 999px 999px 1.25rem 1.25rem;
+  }
+
+  .card-shadow {
+    box-shadow:
+      0 30px 60px -30px rgba(24, 17, 8, 0.45),
+      0 8px 24px -12px rgba(24, 17, 8, 0.18);
+  }
+
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 60% 50% at 18% 12%, rgba(201, 169, 110, 0.16), transparent 70%),
+      radial-gradient(ellipse 50% 60% at 88% 40%, rgba(236, 111, 166, 0.12), transparent 72%),
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201, 169, 110, 0.08), transparent 70%);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(100deg, #f0e4c9 0%, #c9a96e 42%, #efe0bf 70%, #a5864e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .pink-gradient-text {
+    background: linear-gradient(100deg, #f7b4cf 0%, #ec6fa6 50%, #f8cfe0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: rgba(18, 16, 14, 0.72);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .glass-light {
+    background: rgba(251, 247, 239, 0.82);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+
+  .animate-float {
+    animation: floaty 7s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: floaty 11s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-overlay {
+    animation: fadeIn 0.25s ease-out both;
+  }
+
+  .animate-drawer {
+    animation: slideInRight 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-sheet {
+    animation: slideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
